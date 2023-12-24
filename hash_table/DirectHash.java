@@ -1,67 +1,43 @@
-package hash_table;
+package hash_table;  //package untuk menyimpan class directhash
 
-/**
- * Kelas DirectHash
- * Implementasi sederhana dari struktur data hash table menggunakan array.
- * Dalam implementasi ini, nilai data (value) digunakan sebagai kunci (key) atau indeks langsung dalam array.
- */
+
 public class DirectHash {
     
-    // Array untuk menyimpan data. Setiap indeks dalam array merepresentasikan kunci (key),
-    // dan elemen pada indeks tersebut adalah nilai (value).
-    private int[] table;
+    private int[] table; //Array untuk menyimpan data dengan indeks sesuai nilai
 
-    /**
-     * Konstruktor DirectHash
-     * @param size Ukuran dari array hash table
-     * Menginisialisasi array table dengan ukuran yang ditentukan oleh parameter size.
-     */
-    public DirectHash(int size) {
+    public DirectHash(int size) {  //konstruktor untuk membuat hashtable 
         table = new int[size];
     }
 
-    /**
-     * Metode insert
-     * @param value Nilai yang akan disisipkan ke dalam hash table
-     * Menyisipkan nilai ke dalam hash table pada indeks yang sama dengan nilai itu sendiri.
-     */
-    public void insert(int value) {
-        table[value] = value; // Gunakan nilai sebagai kunci (indeks)
+    public void insert(int value) {  // metode yang di gunakan untuk menyisipkan ( insert) ke dalam hashtbale
+        table[value] = value; // gunakan nilai sebagai kunci( index)
         System.out.println("Data: "+value+" dimasukan ke index: "+ value);
     }
 
-    /**
-     * Metode search
-     * @param value Nilai yang akan dicari dalam hash table
-     * @return Nilai yang dicari jika ditemukan, atau -1 jika tidak ditemukan
-     * Mencari nilai dalam hash table dan mengembalikannya jika ditemukan.
-     */
-    public int search(int value) {
-        if (table[value] == value) {
-            return table[value]; // Kembalikan nilai jika ditemukan
+    public int search(int value) {  //metode untuk mencari nilai yang ada di dalam data(hashtable)
+        if (table[value] == value) { //periksa nilai,apakah nilai ada pada indeks yang sesuai apa tidak
+            return table[value]; // kembalikan nilai jika ada
         }
-        return -1; // Tidak ditemukan
+        return -1; //jika tidak di temukan
     }
 
-    /**
-     * Metode main
-     * Contoh penggunaan kelas DirectHash.
-     */
-    public static void main(String[] args) {
-        // Inisialisasi Direct Hash dengan ukuran array 200
-        DirectHash directHash = new DirectHash(200);
+//metode utama (main) untuk menjalankan hashtable
+    public static void main(String[] args) { 
+        DirectHash directHash = new DirectHash(200); //inisialisai hash dengan ukuran array 200
 
-        // Menyisipkan beberapa nilai
+        //menambah nilai ke directhash
         directHash.insert(9);
         directHash.insert(50);
         directHash.insert(100);
 
-        // Mencari nilai
-        System.out.println("Hasil pencarian nilai 9 di Index: " + directHash.search(9));  // Harusnya mengembalikan 9
-        System.out.println("Hasil pencarian nilai 50 di Index: " + directHash.search(50));  // Harusnya mengembalikan 50
-        System.out.println("Hasil pencarian nilai 100 di Index: " + directHash.search(100));  // Harusnya mengembalikan 100
+        //mencari nilai
+        System.out.println("Hasil pencarian nilai 9 di Index: " + directHash.search(9));  
+        System.out.println("Hasil pencarian nilai 50 di Index: " + directHash.search(50));  
+        System.out.println("Hasil pencarian nilai 100 di Index: " + directHash.search(100));  
+        //jika nilai ada maka nilai akan di kembalikan
 
-        // Mencari nilai yang tidak ada
-        System.out.println("Hasil pencarian nilai 150 di Index: " + directHash.search(150));  // Harusnya mengembalikan -1 (tidak ditemukan)
+
+        System.out.println("Hasil pencarian nilai 150 di Index: " + directHash.search(150));  
+        //karena nilai 150 tidak ada di directhash maka yang akan di kembalikan adalah -1
     }
 }
