@@ -1,74 +1,52 @@
-package hash_table;
+package hash_table; //fplder untuk menyimpan clas
 
 import java.util.LinkedList;
 
-/**
- * Kelas StringHash
- * <p>
- * Implementasi sederhana dari struktur data hash table untuk menyimpan string.
- * Teknik "Separate Chaining" digunakan untuk menangani kolisi.
- * </p>
- */
+
 public class StringHash {
     
-    /**
-     * Array dari LinkedList untuk menyimpan data.
-     */
+  //array untuk menyimpan data
     private LinkedList<String>[] table;
 
-    /**
-     * Konstruktor StringHash
-     * @param size Ukuran dari array hash table
-     * <p>
-     * Menginisialisasi array dan LinkedList di setiap indeks array.
-     * </p>
-     */
+   
+    //konstrutor untuk membuat string hash dengn ukuran size
     public StringHash(int size) {
         table = new LinkedList[size];
+
+        //menginisialisai setiap hsh di ndex
         for (int i = 0; i < size; i++) {
             table[i] = new LinkedList<>();
         }
     }
 
-    /**
-     * Fungsi hash untuk menghitung indeks dari string.
-     * @param key String yang akan dihitung indeksnya
-     * @return Indeks yang dihasilkan dari fungsi hash
-     */
+    //fungsi hash untk menghitung index dari string
     public int hashFunction(String key) {
-        return key.charAt(0) % table.length;
+        return key.charAt(0) % table.length; //return index ynag di hasilkan
     }
 
-    /**
-     * Metode untuk menyisipkan string ke dalam hash table.
-     * @param value String yang akan disisipkan
-     */
+    //unutk menambah string ke dalam hashtable
     public void insert(String value) {
-        int index = hashFunction(value); // Hitung indeks
-        table[index].add(value); // Tambahkan ke LinkedList di indeks tersebut
+        int index = hashFunction(value); //hitung inex
+        table[index].add(value); //tambah index 
         System.out.println("Data "+value+" ditambahkan di index: "+index);
     }
 
-    /**
-     * Metode untuk mencari string dalam hash table.
-     * @param value String yang akan dicari
-     * @return Indeks dari LinkedList di mana string tersebut berada
-     */
+   //untuk mencari string yang ad di hashtble
     public int search(String value) {
-        int index = hashFunction(value); // Hitung indeks
-        return index; // Cek apakah nilai ada di LinkedList di indeks tersebut
+        int index = hashFunction(value); //menghitung index hash
+        return index;  //kembalikan index
     }
 
-    /**
-     * Metode main untuk demonstrasi.
-     * @param args argumen baris perintah
-     */
+ //metode utama
     public static void main(String[] args) {
-        // String Hash with Separate Chaining
-        StringHash stringHash = new StringHash(26); // Membuat objek dengan ukuran 26 (A-Z)
-        stringHash.insert("Kucing"); // Menyisipkan string "Kucing"
-        stringHash.insert("Ayam"); // Menyisipkan string "Ayam"
-        stringHash.insert("Kelinci");// Menyisipkan string "Kelinci"
+        //membuat hash table dengna ukuran 26
+        StringHash stringHash = new StringHash(26); 
+        //tambahkan beberapa stirng ke hashtable
+        stringHash.insert("Kucing"); 
+        stringHash.insert("Ayam"); 
+        stringHash.insert("Kelinci");
+        
+        //memcari sring kelinci dan mencetak indexnya
         System.out.println("String Kelinci ditemukan di index: " + stringHash.search("Kelinci")); // Mencari string "Kelinci"
     }
 }

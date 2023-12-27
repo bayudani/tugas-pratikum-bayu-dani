@@ -1,85 +1,74 @@
-package hash_table;
+package hash_table; //folder untuk menyimpan class stephash
 
-/**
- * Kelas StepHash
- * <p>
- * Implementasi sederhana dari struktur data hash table menggunakan array.
- * Teknik "step hashing" digunakan untuk menangani kolisi.
- * </p>
- */
+
 public class StepHash {
     
-    /**
-     * Array untuk menyimpan data.
-     */
-    private int[] table;
+    
+    private int[] table; // array untuk menyimpan data 
 
-    /**
-     * Langkah atau interval untuk menangani kolisi.
-     */
-    private int step = 1;
+    
+    private int step = 1; //ukuran langkah 
 
-    /**
-     * Konstruktor StepHash
-     * @param size Ukuran dari array hash table
-     */
+    //komstruktor 
     public StepHash(int size) {
-        table = new int[size];
+        table = new int[size]; //array hashtable
     }
 
-    /**
-     * Metode untuk menyisipkan nilai ke dalam hash table.
-     * @param value Nilai yang akan disisipkan
-     */
+
+    //metode untuk menambahkan/menyisipkan nilai ke dalam hashtable
     public void insert(int value) {
-        int index = value % table.length; // Hitung indeks awal
-        // Cari slot kosong jika terjadi kolisi
+        int index = value % table.length; //hitung indeks awal dengan menggunakan operasi modulp (%)
+
+        // untuk menangani kolisi/tabrakan
         while (table[index] != 0) {
             System.out.println("Terjadi collition pada key: "+ index);
-            index = (index + step) % table.length; // Gunakan langkah untuk mencari slot kosong
+            index = (index + step) % table.length; //geser indeks sebesar ukuran langkah,di atas tadi sudah dikasi ukuran ny 1,digunakan untuk mencari slot yang kosong
             System.out.println("Index di geser ke: "+index);
         }
-        table[index] = value; // Sisipkan nilai
+        //tambahkan nilai ke indeks //
+        table[index] = value; 
         System.out.println("Data dimasukan ke dalam index : "+index);
     }
 
-    /**
-     * Metode untuk mencari nilai dalam hash table.
-     * @param value Nilai yang akan dicari
-     * @return Indeks dari nilai yang dicari, atau -1 jika tidak ditemukan
-     */
+   
+    //metode yang di gunakan untuk mencari nilai yang ada di dalam hashtbale
     public int search(int value) {
-        int index = value % table.length; // Hitung indeks awal
-        // Cari nilai yang sesuai
+        int index = value % table.length; //hitung index awal
+
+
+        //cari nilai yang sesuai,jika nilai di temukan makaa index ny di kemblikan
         while (table[index] != 0) {
             if (table[index] == value) {
-                return index; // Kembalikan indeks jika ditemukan
+                return index; //kembalikan index
             }
-            index = (index + step) % table.length; // Gunakan langkah untuk mencari lebih lanjut
+            index = (index + step) % table.length; //geser index menggunakna langkah untuk mencari lagi
         }
         return -1; // Tidak ditemukan
     }
 
-    /**
-     * Metode main untuk demonstrasi.
-     * @param args argumen baris perintah
-     */
+    
+
+    //metode utama untuk menjalakan clas stephash
     public static void main(String[] args) {
-        // Inisialisasi Step Hash dengan ukuran array 10
         StepHash stepHash = new StepHash(10);
 
-        // Menyisipkan beberapa nilai
+        // menambahkan beberapa nilai
         stepHash.insert(9);
         stepHash.insert(9);
         stepHash.insert(8);
         stepHash.insert(50);
 
         // Mencari nilai
-        System.out.println("Hasil pencarian nilai 9 di Index: " + stepHash.search(9));  // Harusnya mengembalikan 9
-        System.out.println("Hasil pencarian nilai 50 di Index: " + stepHash.search(50));  // Harusnya mengembalikan 50
-        System.out.println("Hasil pencarian nilai 8 di Index: " + stepHash.search(8));  // Harusnya mengembalikan 100
+        System.out.println("Hasil pencarian nilai 9 di Index: " + stepHash.search(9));  
+        System.out.println("Hasil pencarian nilai 50 di Index: " + stepHash.search(50));  
+        System.out.println("Hasil pencarian nilai 8 di Index: " + stepHash.search(8));  
+        // jika nilai ditemukan maka index akan di kembalikan,dikarenakan semua nilai yang akan di tampilkan
+        // ada maka index ny akan di kembalikan
+
+
 
         // Mencari nilai yang tidak ada
-        System.out.println("Hasil pencarian nilai 200 di Index: " + stepHash.search(200));  // Harusnya mengembalikan -1 (tidak ditemukan)
+        System.out.println("Hasil pencarian nilai 200 di Index: " + stepHash.search(200));  
+        //jika nilai tidak ada maka akan di kembalikan -1
     }
 }

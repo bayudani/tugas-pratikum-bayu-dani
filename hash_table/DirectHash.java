@@ -1,4 +1,4 @@
-package hash_table;  //package untuk menyimpan class directhash
+package hash_table;  //package(folder) untuk menyimpan class directhash
 
 
 public class DirectHash {
