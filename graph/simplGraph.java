@@ -1,11 +1,11 @@
 package graph;
-
+//folder untuk menyimpan class
 import java.util.*;
 
-class SimpleGraph {
+class SimpleGraph { //clas simplegraf
     private Map<Integer, List<Integer>> adjacencyList;
 
-    public SimpleGraph() {
+    public SimpleGraph() { //konstruktor simple graf
         adjacencyList = new HashMap<>();
     }
 
@@ -37,19 +37,23 @@ class SimpleGraph {
         }
     }
 
+    //metode utama untuk menjalankan program
     public static void main(String[] args) {
         SimpleGraph graph = new SimpleGraph();
+        //tambahkan node ke graf
         graph.addNode(0);
         graph.addNode(1);
         graph.addNode(2);
         graph.addNode(3);
 
+        //tambahkan sisi /edge ke graf
         graph.addEdge(0, 1);
         graph.addEdge(0, 2);
         graph.addEdge(1, 2);
         graph.addEdge(2, 0);
         graph.addEdge(2, 3);
 
+        //cetak graf
         graph.printGraph();
     }
 }

@@ -1,10 +1,8 @@
 package graph;
-
+//folder untuk menyimpan class
 
 import java.util.*;
 
-// Kelas Edge merepresentasikan sisi dalam graf.
-// Implementasi Comparable untuk memungkinkan pembandingan berdasarkan bobot.
 class Edge implements Comparable<Edge> {
     String source;       // Node sumber sisi
     String destination;  // Node tujuan sisi
@@ -77,7 +75,7 @@ public class KruskalGraphTraversal {
         System.out.println("Total bobot MST: " + mstWeight);
     }
 
-    // Metode main untuk menjalankan algoritma.
+    // Metode utama untuk menjalankan algoritma.
     public static void main(String[] args) {
         KruskalGraphTraversal graph = new KruskalGraphTraversal();
         

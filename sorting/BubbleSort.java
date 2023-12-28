@@ -1,27 +1,19 @@
-package sorting;
+package sorting; //folder untuk menyimpan class bublesort
 
-/**
- * Kelas untuk mengimplementasikan Bubble Sort pada array.
- */
+
 public class BubbleSort {
 
-    /**
-     * Metode untuk mengurutkan array menggunakan algoritma Bubble Sort.
-     *
-     * @param arr Array yang akan diurutkan.
-     */
+    //metode untuk mengurutkn array dengan algoritma buble sort
+    //yaitu dengn cara memindahkan nilai yang kecil ke sebelah kiri dan yng besar ke sebelah kanan//
     void bubbleSort(int arr[]) {
-        int n = arr.length; // Mendapatkan panjang dari array
+        int n = arr.length;
 
-        // Loop luar dari awal sampai hampir akhir array
+        //perulangan untuk membandingkan nilai dalam array
         for (int i = 0; i < n-1; i++) {
-            
-            // Loop dalam untuk perbandingan dan pertukaran
+            //perulangan untuk membandingkan nilai2 yang berdekatan
             for (int j = 0; j < n-i-1; j++) {
-                
-                // Jika elemen saat ini lebih besar dari yang berikutnya
+                //jika nilai di sebelah kiri lebih besar dari nilai sebelah kanan,tukar posisinya
                 if (arr[j] > arr[j+1]) {
-                    // Pertukaran elemen
                     int temp = arr[j];
                     arr[j] = arr[j+1];
                     arr[j+1] = temp;
@@ -30,20 +22,16 @@ public class BubbleSort {
         }
     }
 
-    /**
-     * Metode utama untuk menjalankan program.
-     *
-     * @param args Argumen baris perintah tidak digunakan.
-     */
+
+    //metode utama untuk menjalankan class
     public static void main(String args[]) {
-        BubbleSort ob = new BubbleSort(); // Membuat instansi dari kelas BubbleSort
-        int arr[] = {64, 34, 25, 12, 22, 11, 90}; // Array yang akan diurutkan
+        BubbleSort ob = new BubbleSort(); //buat objek Bubblesort nya
+        int arr[] = {64, 34, 25, 12, 22, 11, 90}; //arrya yang nnti nya akan di urutkan menggunaka metode bubblesort
 
-        ob.bubbleSort(arr); // Memanggil metode bubbleSort
+        ob.bubbleSort(arr);  //panggil metode bubble sort untk mengurutkan
+        System.out.println("Sorted array"); 
 
-        System.out.println("Sorted array"); // Mencetak pesan
-
-        // Loop untuk mencetak array yang sudah diurutkan
+        //cetak arrry yang sudah di urutka 
         for (int i=0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
         }

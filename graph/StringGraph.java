@@ -1,11 +1,12 @@
 package graph;
+//folder untuk menyimpan class
 
 import java.util.*;
 
-class StringGraph {
+class StringGraph { //class string graph
     private Map<String, List<String>> adjacencyList;
 
-    public StringGraph() {
+    public StringGraph() { //konstruktor string graf
         adjacencyList = new HashMap<>();
     }
 
@@ -32,19 +33,24 @@ class StringGraph {
         }
     }
 
+    //metode utama untuk menjalankan program
     public static void main(String[] args) {
         StringGraph graph = new StringGraph();
+        //tambah node ke graf
         graph.addNode("A");
         graph.addNode("B");
         graph.addNode("C");
         graph.addNode("D");
 
+        //tambah edge ke graf
         graph.addEdge("A", "B");
         graph.addEdge("A", "C");
         graph.addEdge("B", "C");
         graph.addEdge("C", "A");
         graph.addEdge("C", "D");
 
+
+        //cetak graf
         graph.printGraph();
     }
 }

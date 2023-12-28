@@ -1,20 +1,23 @@
-/* Graph berbobot untuk directed graph */
+
 
 package graph;
+//folder untuk menyimpan class
 import java.util.*;
 
 class Edge {
-    String destination;
-    int weight;
+    String destination; // simpul tujuan
+    int weight; //bobot sisi
 
-    public Edge(String destination, int weight) {
+    public Edge(String destination, int weight) { //konstruktor untk membuat sisi
         this.destination = destination;
         this.weight = weight;
     }
 }
 
+
+//class utama untuk algoritma nya
 class WeightedGraph {
-    private Map<String, List<Edge>> adjacencyList;
+    private Map<String, List<Edge>> adjacencyList; // untuk menyimpan graf
 
     public WeightedGraph() {
         adjacencyList = new HashMap<>();
@@ -45,18 +48,23 @@ class WeightedGraph {
         }
     }
 
+//metode utama untuk menjalankakn program
     public static void main(String[] args) {
-        WeightedGraph graph = new WeightedGraph();
+        WeightedGraph graph = new WeightedGraph(); //panggil objek graph nya
+        //tambahkan node ke graf
         graph.addNode("A");
         graph.addNode("B");
         graph.addNode("C");
         graph.addNode("D");
 
+        //tambahkan edge ke graf
         graph.addEdge("A", "B", 5);
         graph.addEdge("A", "C", 3);
         graph.addEdge("B", "C", 2);
         graph.addEdge("C", "D", 4);
 
+
+        //cetak graf
         graph.printGraph();
     }
 }

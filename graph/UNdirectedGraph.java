@@ -1,12 +1,13 @@
 package graph;
+//folder untuk menyimpan graf
 
 import java.util.*;
 
-class UndirectedGraph {
+class UndirectedGraph { //class nya
     private Map<String, List<String>> adjacencyList;
 
-    public UndirectedGraph() {
-        adjacencyList = new HashMap<>();
+    public UndirectedGraph() { //konstruktor
+        adjacencyList = new HashMap<>(); // map untuk menyimpan graf nya
     }
 
     // Menambahkan node baru ke graf
@@ -41,18 +42,25 @@ class UndirectedGraph {
         }
     }
 
+
+    //metode utama untuk menjalankan program graf
     public static void main(String[] args) {
         UndirectedGraph graph = new UndirectedGraph();
+        //tambahkan node ke graf
         graph.addNode("A");
         graph.addNode("B");
         graph.addNode("C");
         graph.addNode("D");
 
+
+        //tambahkan edge ke graf
         graph.addEdge("A", "B");
         graph.addEdge("A", "C");
         graph.addEdge("B", "C");
         graph.addEdge("C", "D");
 
+
+        //cetak graf
         graph.printGraph();
     }
 }

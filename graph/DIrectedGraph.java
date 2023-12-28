@@ -1,20 +1,20 @@
-package graph;
+package graph;  // folder untuk menyimpan class
 
-import java.util.*;
+import java.util.*;  
 
-class DirectedGraph {
-    private Map<String, List<String>> adjacencyList;
+class DirectedGraph {  // class untuk  graf berarah
+    private Map<String, List<String>> adjacencyList;  // Daftar ketetanggaan untuk menyimpan graf
 
-    public DirectedGraph() {
+    public DirectedGraph() {  // Konstruktor untuk menginisialisasi graf
         adjacencyList = new HashMap<>();
     }
 
-    // Menambahkan node baru ke graf
+    // Metode untuk menambahkan simpul (node) ke graf
     public void addNode(String node) {
-        adjacencyList.putIfAbsent(node, new ArrayList<>());
+        adjacencyList.putIfAbsent(node, new ArrayList<>());  // Tambahkan simpul jika belum ada
     }
 
-    // Menambahkan edge ke graf (hanya satu arah untuk graf berarah)
+    // Metode untuk menambahkan sisi (edge) ke graf (hanya satu arah untuk graf berarah)
     public void addEdge(String source, String destination) {
         // Pastikan node sumber ada dalam adjacency list
         adjacencyList.putIfAbsent(source, new ArrayList<>());
@@ -23,12 +23,12 @@ class DirectedGraph {
         adjacencyList.get(source).add(destination);
     }
 
-    // Mendapatkan daftar tetangga dari node
+    // Metode untuk mendapatkan daftar tetangga dari node
     public List<String> getNeighbors(String node) {
-        return adjacencyList.getOrDefault(node, Collections.emptyList());
+        return adjacencyList.getOrDefault(node, Collections.emptyList());  // Kembalikan daftar tetangga, atau daftar kosong jika tidak ada
     }
 
-    // Mencetak graf
+    // Metode untuk mencetak graf
     public void printGraph() {
         for (String node : adjacencyList.keySet()) {
             System.out.print("Node " + node + " terhubung dengan: ");
@@ -39,6 +39,7 @@ class DirectedGraph {
         }
     }
 
+    // Metode utama untuk menjalnkan program
     public static void main(String[] args) {
         DirectedGraph graph = new DirectedGraph();
         graph.addNode("A");
@@ -46,12 +47,12 @@ class DirectedGraph {
         graph.addNode("C");
         graph.addNode("D");
 
-        graph.addEdge("A", "B");
-        graph.addEdge("A", "C");
-        graph.addEdge("B", "C");
-        graph.addEdge("C", "A");
-        graph.addEdge("C", "D");
+        graph.addEdge("A", "B");  // Buat edge dari A ke B
+        graph.addEdge("A", "C");  // Buat edge dari A ke C
+        graph.addEdge("B", "C");  // Buat edge dari B ke C
+        graph.addEdge("C", "A");  // Buat edge dari C ke A
+        graph.addEdge("C", "D");  // Buat edge dari C ke D
 
-        graph.printGraph();
+        graph.printGraph();  // Cetak graf untuk melihat hubungan antar node
     }
 }
